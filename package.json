@@ -4,8 +4,14 @@
   "description": "a test server that creates a countdown gif",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Robin Burrer",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "canvas": "^2.11.2",
+    "express": "^4.18.2",
+    "gif-encoder-2": "^1.0.5"
+  }
 }
