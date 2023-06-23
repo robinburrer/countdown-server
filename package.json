@@ -1,0 +1,11 @@
+{
+  "name": "countdown-server",
+  "version": "1.0.0",
+  "description": "a test server that creates a countdown gif",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Robin Burrer",
+  "license": "ISC"
+}
