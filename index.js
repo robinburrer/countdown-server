@@ -15,7 +15,7 @@ registerFont('/System/Library/Fonts/Supplemental/Arial Black.ttf', {
 app.get('/', (req, res) => {
   res.set('Content-Type', 'image/gif');
 
-  const canvasWidth = 300;
+  const canvasWidth = 500;
   const canvasHeight = 300;
 
   // Create a canvas
@@ -35,11 +35,11 @@ app.get('/', (req, res) => {
   // Draw the countdown frames
   const countdownDuration = 10; // 10 seconds
   for (let i = countdownDuration; i >= 0; i--) {
-    ctx.fillStyle = 'black';
+    ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, canvasWidth, canvasHeight);
 
     ctx.font = '40px YourFontName'; // Use your desired font name here
-    ctx.fillStyle = 'white';
+    ctx.fillStyle = 'black';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(`Countdown: ${i}`, canvasWidth / 2, canvasHeight / 2);
