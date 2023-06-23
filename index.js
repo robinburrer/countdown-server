@@ -7,8 +7,7 @@ const app = express();
 const port = 4000;
 
 // Register your font if you're using a custom font
-// Register your font if you're using a custom font
-registerFont('/System/Library/Fonts/Supplemental/Arial Black.ttf', {
+registerFont('/System/Library/Fonts/Supplemental/Courier New.ttf', {
   family: 'YourFontName',
 });
 
@@ -16,7 +15,7 @@ app.get('/', (req, res) => {
   res.set('Content-Type', 'image/gif');
 
   const canvasWidth = 500;
-  const canvasHeight = 300;
+  const canvasHeight = 100;
 
   // Create a canvas
   const canvas = createCanvas(canvasWidth, canvasHeight);
@@ -41,6 +40,7 @@ app.get('/', (req, res) => {
     ctx.font = '40px YourFontName'; // Use your desired font name here
     ctx.fillStyle = 'black';
     ctx.textAlign = 'center';
+    ctx.fontWeiht = 'bold';
     ctx.textBaseline = 'middle';
     ctx.fillText(`Countdown: ${i}`, canvasWidth / 2, canvasHeight / 2);
 
