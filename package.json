@@ -4,7 +4,7 @@
   "description": "a test server that creates a countdown gif",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Robin Burrer",
@@ -12,6 +12,7 @@
   "dependencies": {
     "canvas": "^2.11.2",
     "express": "^4.18.2",
-    "gif-encoder-2": "^1.0.5"
+    "gif-encoder-2": "^1.0.5",
+    "nodemon": "^2.0.22"
   }
 }

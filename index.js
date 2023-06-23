@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
   encoder.start();
 
   // Draw the countdown frames
-  const countdownDuration = 10; // 10 seconds
+  const countdownDuration = 30; // 10 seconds
   for (let i = countdownDuration; i >= 0; i--) {
     ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, canvasWidth, canvasHeight);
