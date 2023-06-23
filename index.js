@@ -6,7 +6,7 @@ const fs = require('fs');
 const app = express();
 const port = 4000;
 
-// Register your font if you're using a custom font
+// Register your font
 registerFont('/System/Library/Fonts/Supplemental/Courier New.ttf', {
   family: 'YourFontName',
 });
