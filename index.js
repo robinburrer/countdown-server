@@ -1,4 +1,7 @@
 const express = require('express');
+const maxmind = require('maxmind');
+const Reader = require('@maxmind/geoip2-node').Reader;
+
 const { createCanvas, registerFont } = require('canvas');
 const GIFEncoder = require('gif-encoder-2');
 const fs = require('fs');
@@ -41,7 +44,27 @@ const generateDisplayString = (counter) => {
   return { displayString };
 };
 
+// LOCATION
+let reader;
+const initReader = async () => {
+  reader = await Reader.open(
+    '/Users/robinburrer/git-syzygy/team-2/countdown-server/GeoLite2-City.mmdb',
+    {}
+  );
+};
+initReader();
+
+const readLocation = (req) => {
+  if (!reader) return;
+  const response = reader.city('109.192.195.211');
+
+  console.log(response.country.isoCode);
+  console.log(response.city.names.en);
+  console.log(response.postal.code);
+};
+
 app.get('/', (req, res) => {
+  readLocation(req);
   res.set('Content-Type', 'image/gif');
 
   const canvasWidth = 600;
