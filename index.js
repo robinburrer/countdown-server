@@ -45,6 +45,7 @@ const generateDisplayString = (counter) => {
 };
 
 // LOCATION
+//https://maxmind.github.io/GeoIP2-node/index.html
 let reader;
 const initReader = async () => {
   reader = await Reader.open(
@@ -61,7 +62,10 @@ const readLocation = (req) => {
   console.log(response.country.isoCode);
   console.log(response.city.names.en);
   console.log(response.postal.code);
+  console.log(response.location.timeZone);
 };
+
+// END LOCATION
 
 app.get('/', (req, res) => {
   readLocation(req);
