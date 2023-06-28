@@ -1,7 +1,6 @@
 const express = require('express');
 const maxmind = require('maxmind');
-const Reader = require('@maxmind/geoip2-node').Reader;
-
+const readLocation = require('./timeAndLocation');
 const { createCanvas, registerFont } = require('canvas');
 const GIFEncoder = require('gif-encoder-2');
 const fs = require('fs');
@@ -42,27 +41,6 @@ const generateDisplayString = (counter) => {
   } - ${remainingSeconds} seconds`;
 
   return { displayString };
-};
-
-// LOCATION
-//https://maxmind.github.io/GeoIP2-node/index.html
-let reader;
-const initReader = async () => {
-  reader = await Reader.open(
-    '/Users/robinburrer/git-syzygy/team-2/countdown-server/GeoLite2-City.mmdb',
-    {}
-  );
-};
-initReader();
-
-const readLocation = (req) => {
-  if (!reader) return;
-  const response = reader.city('109.192.195.211');
-
-  console.log(response.country.isoCode);
-  console.log(response.city.names.en);
-  console.log(response.postal.code);
-  console.log(response.location.timeZone);
 };
 
 // END LOCATION
