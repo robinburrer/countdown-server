@@ -13,16 +13,18 @@ initReader();
 
 const readLocation = (req) => {
   if (!reader) return;
-  const response = reader.city('109.192.195.211');
+  const response = reader.city(req.ip);
+  const timeZone = 'somewhere';
+  if (response) {
+    console.log('country:', response.country.isoCode);
+    console.log('city:', response.city.names.en);
+    console.log('potal code:', response.postal.code);
+    console.log('timezone:', response.location.timeZone);
 
-  console.log('country:', response.country.isoCode);
-  console.log('city:', response.city.names.en);
-  console.log('potal code:', response.postal.code);
-  console.log('timezone:', response.location.timeZone);
-
-  const timeZone = response.location.timeZone
-    ? response.location.timeZone
-    : 'somewhere';
+    timeZone = response.location.timeZone
+      ? response.location.timeZone
+      : 'somewhere';
+  }
 
   return timeZone;
 };
