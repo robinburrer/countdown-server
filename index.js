@@ -1,17 +1,33 @@
 const express = require('express');
 const maxmind = require('maxmind');
-const readLocation = require('./timeAndLocation');
+// const readLocation = require('./timeAndLocation');
 const { createCanvas, registerFont } = require('canvas');
 const GIFEncoder = require('gif-encoder-2');
 const fs = require('fs');
 
 const app = express();
-const port = process.env.PORT || 4000;
 
-// Register your font
-registerFont('/System/Library/Fonts/Supplemental/Courier New.ttf', {
-  family: 'YourFontName',
-});
+/**
+ * Normalize a port into a number, string, or false.
+ */
+
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
+const port = process.env.PORT || normalizePort('4000');
 
 const generateDisplayString = (counter) => {
   let now = new Date();
@@ -46,7 +62,6 @@ const generateDisplayString = (counter) => {
 // END LOCATION
 
 app.get('/', (req, res) => {
-  readLocation(req);
   res.set('Content-Type', 'image/gif');
 
   const canvasWidth = 600;
@@ -75,7 +90,7 @@ app.get('/', (req, res) => {
     ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, canvasWidth, canvasHeight);
 
-    ctx.font = '20px YourFontName'; // Use your desired font name here
+    ctx.font = '20px Arial'; // Use your desired font name here
     ctx.fillStyle = 'black';
     ctx.textAlign = 'center';
     ctx.fontWeiht = 'bold';
