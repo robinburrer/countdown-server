@@ -59,7 +59,9 @@ const generateDisplayString = (counter) => {
     remainingHours > 1 || remainingHours === 0 ? 'hours' : 'hour'
   } - ${remainingMinutes} ${
     remainingMinutes > 1 || remainingMinutes === 0 ? 'minutes' : 'minute'
-  } - ${remainingSeconds} seconds`;
+  } - ${remainingSeconds} ${
+    remainingSeconds > 1 || remainingSeconds === 0 ? 'seconds' : 'second'
+  }`;
 
   return { displayString };
 };
