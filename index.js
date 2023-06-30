@@ -1,6 +1,6 @@
 const express = require('express');
 const maxmind = require('maxmind');
-//const readLocation = require('./timeAndLocation');
+const readLocation = require('./timeAndLocation');
 const { createCanvas, registerFont } = require('canvas');
 const GIFEncoder = require('gif-encoder-2');
 const fs = require('fs');
@@ -69,7 +69,7 @@ const generateDisplayString = (counter) => {
 // END LOCATION
 
 app.get('/', (req, res) => {
-  // readLocation(req);
+  const timeZone = readLocation(req);
   res.set('Content-Type', 'image/gif');
 
   const canvasWidth = 600;
@@ -105,6 +105,12 @@ app.get('/', (req, res) => {
     ctx.textBaseline = 'middle';
 
     ctx.fillText(`${displayString}`, canvasWidth / 2, canvasHeight / 2);
+
+    ctx.fillText(
+      `Your timezone: ${timeZone}`,
+      canvasWidth / 2,
+      canvasHeight / 2 + 30
+    );
 
     encoder.addFrame(ctx);
   }

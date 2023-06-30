@@ -19,6 +19,12 @@ const readLocation = (req) => {
   console.log('city:', response.city.names.en);
   console.log('potal code:', response.postal.code);
   console.log('timezone:', response.location.timeZone);
+
+  const timeZone = response.location.timeZone
+    ? response.location.timeZone
+    : 'somewhere';
+
+  return timeZone;
 };
 
 module.exports = readLocation;
