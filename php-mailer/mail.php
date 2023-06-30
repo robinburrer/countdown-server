@@ -26,17 +26,23 @@
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Retrieve the email address submitted in the form
         $email = $_POST['email'];
+        $code = $_POST['code'];
 
-        // Email parameters
-        $to = $email; // Recipient's email address
-        $subject = 'Wann ist der 11.11'; // Email subject
-        $message = ''; // Email message
+        if ($code === ''){
+             // Email parameters
+            $to = $email; // Recipient's email address
+            $subject = 'Wann ist der 11.11'; // Email subject
+            $message = ''; // Email message
 
-        // Call the sendEmail() function
-        sendEmail($to, $subject, $message);
+            // Call the sendEmail() function
+            sendEmail($to, $subject, $message);
 
-        // Display a success message to the user
-        echo 'Email sent successfully!';
+            // Display a success message to the user
+            echo 'Email sent successfully!';
+        } else {
+            echo 'wrong code!';
+        }
+       
     }
     ?>
 
@@ -44,6 +50,10 @@
     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
+        <br>
+        <br>
+        <label for="code">Password:</label>
+        <input type="password" id="code" name="code" required>
         <br><br>
         <input type="submit" value="Send Email">
     </form>
