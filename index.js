@@ -6,7 +6,7 @@ const GIFEncoder = require('gif-encoder-2');
 const fs = require('fs');
 
 const app = express();
-const port = 4000;
+const port = process.env.PORT || 4000;
 
 // Register your font
 registerFont('/System/Library/Fonts/Supplemental/Courier New.ttf', {
